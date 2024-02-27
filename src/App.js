@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/Navbar';
+import Card from './components/Card';
+import Hero from './components/Hero';
 
 function App() {
+  const cards = [
+    { title: "Card 1", description: "This is card 1" },
+    { title: "Card 2", description: "This is card 2" },
+    { title: "Card 3", description: "This is card 3" },
+    { title: "Card 4", description: "This is card 4" },
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <Hero />
+      <div className='w-screen grid grid-cols-4 p-4 gap-x-2'>
+        {cards.map((card, index) => (
+          <Card key={index} title={card.title} description={card.description} />
+        ))}
+      </div>
     </div>
   );
 }
